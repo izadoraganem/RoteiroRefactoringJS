@@ -1,6 +1,12 @@
 const { readFileSync } = require('fs');
 
 function gerarFaturaStr (fatura, pecas) {
+
+  // função query
+  function getPeca(apresentacao) {
+    return pecas[apresentacao.id];
+  }
+
   // função extraída
   function calcularTotalApresentacao(apre) {
     let total = 0;
@@ -22,11 +28,6 @@ function gerarFaturaStr (fatura, pecas) {
           throw new Error(`Peça desconhecia: ${getPeca(apre).tipo}`);
       }
     return total;
-  }
-  
-  // função query
-  function getPeca(apresentacao) {
-  return pecas[apresentacao.id];
   }
    
     let totalFatura = 0;
